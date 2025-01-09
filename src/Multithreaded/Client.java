@@ -10,6 +10,9 @@ import java.net.UnknownHostException;
 public class Client {
 
     public Runnable getRunnable() throws UnknownHostException, IOException {
+        // Use of Runnable for concurrent tasks.
+        // Returns a Runnable object representing the task to be executed by a thread. Each thread runs an instance of
+        // this task, simulating a client.
         return new Runnable() {
             @Override
             public void run() {
@@ -38,6 +41,8 @@ public class Client {
 
     public static void main(String[] args){
         Client client = new Client();
+
+        // Simulates concurrent client connections to the server.
         for(int i=0; i<100; i++){
             try{
                 Thread thread = new Thread(client.getRunnable());

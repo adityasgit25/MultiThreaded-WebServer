@@ -7,7 +7,14 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+// The ThreadPool server implementation introduces significant improvements over both the single-threaded and
+// multi-threaded server designs by leveraging a fixed thread pool for handling client connections.
 public class Server {
+
+    // ExecutorService is an interface in the Java concurrent package (java.util.concurrent) that provides a framework
+    // for managing and controlling threads in a more structured and efficient way. It abstracts the complexity of
+    // manually creating and managing threads by offering a pool of worker threads that can execute tasks concurrently.
     private final ExecutorService threadPool;
 
     public Server(int poolSize) {

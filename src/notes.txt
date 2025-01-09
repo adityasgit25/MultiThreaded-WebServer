@@ -1,0 +1,82 @@
+### **Using JMeter**
+
+#### **What is JMeter?**
+JMeter is a tool for **performance testing**. It can simulate multiple users (clients) making requests to the server to
+evaluate its behavior under load.
+
+#### **How JMeter Fits Here**:
+- You likely used JMeter to test your single-threaded server by:
+  - Sending multiple simultaneous requests from virtual clients.
+  - Measuring metrics like response time, throughput, and error rates.
+
+#### **JMeter Workflow**:
+1. **Create a Test Plan**:
+   - Define the server's hostname (`localhost`) and port (`8090`).
+   - Specify the protocol (TCP or HTTP depending on your server implementation).
+
+2. **Add Thread Group**:
+   - Simulates multiple users by configuring threads (users), ramp-up time, and loop count.
+
+3. **Add TCP Sampler**:
+   - Configures the request payload, which would simulate the message `"Hello World from socket ..."`.
+   - Matches the request format expected by the server.
+
+4. **Add Listeners**:
+   - Collect metrics such as response times, success/failure rates, and throughput.
+
+#### **Insights Gained with JMeter**:
+- **Performance Bottlenecks**:
+  - A single-threaded server can only handle one request at a time. JMeter can expose delays when multiple requests are sent simultaneously.
+- **Scalability Limits**:
+  - By increasing the number of threads, you can identify the maximum load the server can handle.
+- **Response Analysis**:
+  - Measure how quickly the server responds to requests and identify latency issues.
+
+---
+
+### **Possible Follow-up Questions**
+- How would you optimize the single-threaded server for high concurrency?
+  - Use a multi-threaded model or asynchronous I/O.
+- What challenges might arise with single-threaded servers under heavy load?
+  - Requests will queue up, causing high latency or timeouts.
+- Why is JMeter useful for testing in this context?
+  - It allows simulating real-world scenarios to evaluate server behavior under various loads.
+
+----------
+In Java, PrintWriter and BufferedReader are utility classes used for handling input and output operations, especially
+when working with text data. They simplify reading and writing operations by providing convenient methods and buffering
+for efficient processing.
+
+PrintWriter is used for writing formatted text to an output stream (e.g., a file, console, or network socket).
+BufferedReader is used for reading text data from an input stream (e.g., a file, console, or network socket).
+--------
+
+
+Single Threaded Server
+1. Single-Threaded Limitation:
+   The server processes one client at a time, meaning subsequent clients must wait.
+   This is suitable for lightweight, low-traffic scenarios but not scalable for high concurrency.
+
+------------
+Single-Threaded v/s Multi-threaded
+
+1. Execution Model
+Single-Threaded Client
+    The client runs a single task on the main thread.
+    Only one connection is made to the server at a time.
+    The server handles each client request sequentially (as per its single-threaded design).
+Multi-Threaded Client
+    The client spawns multiple threads, each running a Runnable task.
+    Each thread represents a separate client connection to the server, all running concurrently.
+    Simulates multiple clients connecting to the server simultaneously.
+
+2. Code for Thread Management
+Single-Threaded Client
+    A single Client instance is created, and the run method is executed once.
+    No threads are created explicitly.
+
+Multi-Threaded Client
+    A loop creates 100 threads.
+    Each thread runs the Runnable task returned by getRunnable, simulating 100 independent client connections.
+
+

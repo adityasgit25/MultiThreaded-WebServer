@@ -1,0 +1,38 @@
+Why is Socket used for networking?
+It provides reliable, bidirectional communication over TCP.
+
+What happens if the server is down when the client attempts to connect?
+A ConnectException is thrown.
+
+How would you modify this for a multi-threaded server?
+You'd manage each client connection in a separate thread or use non-blocking I/O with java.nio.
+
+What is the significance of using localhost?
+It ensures the client communicates with a server running on the same machine.
+
+What is the purpose of ServerSocket?
+It listens for incoming client connections on a specified port.
+
+Why use Runnable for multithreading?
+Allows concurrent execution while separating task logic from thread management.
+
+What challenges arise with multithreading?
+- Thread Safety: Shared resources (if any) must be synchronized to avoid race conditions.
+- Resource Management: High thread count can lead to high memory and CPU usage.
+
+How would you further optimize this code?
+- Use a thread pool (ExecutorService) to reduce the overhead of creating and destroying threads.
+- Switch to non-blocking I/O with java.nio for better scalability.
+
+Executer Service
+
+What is ExecutorService in Java?
+- Core Purpose
+The primary goal of ExecutorService is to:
+    - Decouple task submission from thread management.
+        You submit tasks to the ExecutorService, and it handles thread creation, scheduling, and execution.
+    - Provide thread pooling.
+        Threads are reused for multiple tasks, reducing the overhead of frequent thread creation and destruction.
+    - Manage lifecycle.
+        It provides methods to gracefully start, manage, and shut down threads.
+

@@ -1,0 +1,17 @@
+How the Server Works
+1. Startup:
+ The server starts listening on port 8010.
+2. Accept Connections:
+ When a client connects, the server:
+ - Accepts the connection.
+ - Logs the client's details.
+3. Respond:
+ Sends a message to the client.
+4. Repeat:
+ The server remains active and processes one client connection at a time due to its single-threaded nature.
+
+
+Questions (Single Threaded specific):
+What happens if a second client connects while the first is being processed?
+The second client will wait (block) until the server finishes processing the first client.
+
